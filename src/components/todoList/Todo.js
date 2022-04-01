@@ -21,6 +21,14 @@ export default class Todo extends Component {
     });
   };
 
+  deleteItem = (index) => {
+    const arr = this.state.items;
+    arr.splice(index, 1);
+    this.setState({
+      items: arr,
+    });
+  };
+
   renderTodo = () => {
     return this.state.items.map((item, index) => {
       return (
@@ -31,6 +39,7 @@ export default class Todo extends Component {
               <i
                 className="fas fa-times"
                 style={{ cursor: "pointer", color: "red", float: "right" }}
+                onClick={() => this.deleteItem(index)}
               ></i>
             </h4>
           </div>
